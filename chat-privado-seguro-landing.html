@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Privado Seguro - La Revolución de la Comunicación Privada</title>
+    <meta name="description" content="El primer chat P2P con eliminación militar DoD 5220.22-M. Comunicación 100% anónima y segura sin servidores.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chatprivadoseguro.com/">
+    <meta property="og:title" content="Chat Privado Seguro - Comunicación Militar">
+    <meta property="og:description" content="La única app que los gobiernos no pueden espiar. Eliminación militar + P2P puro.">
+    <meta property="og:image" content="https://chatprivadoseguro.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://chatprivadoseguro.com/">
+    <meta property="twitter:title" content="Chat Privado Seguro - Comunicación Militar">
+    <meta property="twitter:description" content="La única app que los gobiernos no pueden espiar. Eliminación militar + P2P puro.">
+    <meta property="twitter:image" content="https://chatprivadoseguro.com/og-image.jpg">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, #00ff88 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #0066ff 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #ff0066 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            color: #00ff88;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #00ff88, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00ff88;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00ff88;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            opacity: 0.8;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+
+        .feature-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 8rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .security-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .security-text h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: #ff0066;
+        }
+
+        .security-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .security-features {
+            list-style: none;
+        }
+
+        .security-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 0, 102, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ff0066;
+        }
+
+        .security-features li::before {
+            content: '🛡️';
+            font-size: 1.5rem;
+        }
+
+        .security-demo {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .demo-screen {
+            background: #000;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #00ff88;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .demo-text {
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            font-size: 0.9rem;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: #00ff88;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: #00ff88;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #00ff88, #ff0066);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: #00ff88;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .security-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">🛡️ Chat Privado Seguro</div>
+            <ul class="nav-links">
+                <li><a href="#features">Características</a></li>
+                <li><a href="#security">Seguridad</a></li>
+                <li><a href="#pricing">Precios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <a href="#download" class="cta-button">Descargar Beta</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 PRIMERA IMPLEMENTACIÓN MUNDIAL</div>
+            <h1 class="fade-in">La Comunicación que los Gobiernos NO Pueden Espiar</h1>
+            <p class="fade-in">El primer chat P2P con eliminación militar DoD 5220.22-M. Comunicación 100% anónima sin servidores. Identidades criptográficas. Cámara segura sin persistencia.</p>
+            
+            <div class="hero-buttons fade-in">
+                <a href="#demo" class="btn-primary">
+                    🎮 Ver Demo en Vivo
+                </a>
+                <a href="#whitepaper" class="btn-secondary">
+                    📄 Leer Whitepaper
+                </a>
+            </div>
+
+            <div class="stats fade-in">
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Anónimo</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Servidores</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">35</span>
+                    <span class="stat-label">Pasadas DoD</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Privacidad</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title fade-in">Tecnología Revolucionaria</h2>
+        <p class="section-subtitle fade-in">Combinamos las mejores tecnologías de seguridad militar con innovación P2P para crear la comunicación más segura del mundo.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🛡️</span>
+                <h3>Eliminación Militar DoD 5220.22-M</h3>
+                <p>Primera implementación P2P del estándar militar estadounidense. 35 pasadas de sobrescritura garantizan eliminación total e irrecuperable de datos.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🔐</span>
+                <h3>Identidades Criptográficas</h3>
+                <p>Sin números de teléfono ni emails. Cada usuario tiene una dirección criptográfica única generada localmente. Anonimato total garantizado.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <span class="feature-icon">📡</span>
+                <h3>P2P Puro Sin Servidores</h3>
+                <p>Comunicación directa entre dispositivos usando WebRTC. Sin intermediarios, sin puntos de falla, sin vigilancia gubernamental.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <span class="feature-icon">📸</span>
+                <h3>Cámara Segura Sin Persistencia</h3>
+                <p>Captura fotos y videos que nunca tocan el almacenamiento del dispositivo. Transmisión directa en memoria RAM únicamente.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <span class="feature-icon">⚡</span>
+                <h3>Eliminación de Emergencia</h3>
+                <p>Botón de pánico que elimina toda la evidencia en segundos usando múltiples pasadas de sobrescritura militar.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🌐</span>
+                <h3>Conexión QR Offline</h3>
+                <p>Emparejamiento seguro mediante códigos QR sin necesidad de internet. Perfecto para situaciones de alta seguridad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="security">
+        <div class="security-content">
+            <div class="security-text slide-in-left">
+                <h2>🔥 Seguridad de Nivel Militar</h2>
+                <p>Desarrollado con los más altos estándares de seguridad utilizados por agencias gubernamentales y militares. Cada línea de código ha sido auditada para garantizar máxima protección.</p>
+                
+                <ul class="security-features">
+                    <li>Encriptación AES-256 de extremo a extremo</li>
+                    <li>Eliminación DoD 5220.22-M certificada</li>
+                    <li>Arquitectura zero-knowledge</li>
+                    <li>Resistente a ataques cuánticos</li>
+                    <li>Auditorías de seguridad continuas</li>
+                    <li>Código abierto para transparencia</li>
+                </ul>
+                
+                <a href="#audit" class="btn-primary">Ver Auditoría de Seguridad</a>
+            </div>
+            
+            <div class="security-demo slide-in-right">
+                <h3>Demo de Eliminación Militar</h3>
+                <div class="demo-screen">
+                    <div class="demo-text">
+> Iniciando eliminación DoD 5220.22-M...<br>
+> Pasada 1/35: Sobrescribiendo con 0x00...<br>
+> Pasada 2/35: Sobrescribiendo con 0xFF...<br>
+> Pasada 3/35: Sobrescribiendo con random...<br>
+> ...<br>
+> Pasada 35/35: Verificación final...<br>
+> <span style="color: #00ff88;">✓ ELIMINACIÓN COMPLETA</span><br>
+> <span style="color: #ff0066;">⚠ DATOS IRRECUPERABLES</span><br>
+> Tiempo total: 2.3 segundos
+                    </div>
+                </div>
+                <p>Demostración en tiempo real del proceso de eliminación militar. Una vez ejecutado, ni siquiera las agencias gubernamentales pueden recuperar los datos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2 class="section-title fade-in">Planes de Protección</h2>
+        <p class="section-subtitle fade-in">Desde usuarios individuales hasta organizaciones gubernamentales. Encuentra el nivel de seguridad que necesitas.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <h3 class="plan-name">Básico</h3>
+                <div class="plan-price">Gratis</div>
+                <div class="plan-period">Para siempre</div>
+                <ul class="plan-features">
+                    <li>2 contactos máximo</li>
+                    <li>Chat P2P básico</li>
+                    <li>Eliminación estándar (1 pasada)</li>
+                    <li>Cámara segura (fotos)</li>
+                    <li>Conexión QR local</li>
+                </ul>
+                <a href="#signup" class="btn-secondary">Empezar Gratis</a>
+            </div>
+            
+            <div class="pricing-card featured fade-in">
+                <h3 class="plan-name">Seguro</h3>
+                <div class="plan-price">$9.99</div>
+                <div class="plan-period">por mes</div>
+                <ul class="plan-features">
+                    <li>Contactos ilimitados</li>
+                    <li>Eliminación militar DoD (35 pasadas)</li>
+                    <li>Video llamadas P2P encriptadas</li>
+                    <li>Backup encriptado blockchain</li>
+                    <li>Múltiples dispositivos</li>
+                    <li>Temas personalizados</li>
+                </ul>
+                <a href="#signup" class="btn-primary">Elegir Plan</a>
+            </div>
+            
+            <div class="pricing-card fade-in">
+                <h3 class="plan-name">Militar</h3>
+                <div class="plan-price">$49.99</div>
+                <div class="plan-period">por usuario/mes</div>
+                <ul class="plan-features">
+                    <li>Todo lo anterior +</li>
+                    <li>Gestión de equipos (100 usuarios)</li>
+                    <li>Auditoría de seguridad</li>
+                    <li>Integración corporativa</li>
+                    <li>Soporte 24/7</li>
+                    <li>Certificaciones compliance</li>
+                </ul>
+                <a href="#contact" class="btn-secondary">Contactar Ventas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="fade-in">¿Listo para Comunicarte sin Miedo?</h2>
+            <p class="fade-in">Únete a miles de usuarios que ya protegen su privacidad con la tecnología más avanzada del mundo. Descarga la beta y experimenta la verdadera libertad digital.</p>
+            
+            <div class="hero-buttons fade-in">
+                <a href="#download" class="btn-primary">
+                    📱 Descargar para iOS
+                </a>
+                <a href="#download" class="btn-primary">
+                    🤖 Descargar para Android
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Política de Privacidad</a>
+                <a href="#terms">Términos de Uso</a>
+                <a href="#security">Auditoría de Seguridad</a>
+                <a href="#whitepaper">Whitepaper Técnico</a>
+                <a href="#contact">Contacto</a>
+                <a href="#press">Prensa</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chat Privado Seguro. Todos los derechos reservados. Patentes pendientes.</p>
+                <p>🛡️ Protegiendo la libertad digital desde 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dynamic stats counter
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            
+            updateCounter();
+        }
+
+        // Animate stats when they come into view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.stat-number');
+                    const text = number.textContent;
+                    
+                    if (text === '100%') {
+                        animateCounter(number, 100);
+                        setTimeout(() => number.textContent = '100%', 2000);
+                    } else if (text === '35') {
+                        animateCounter(number, 35);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // Add click handlers for demo buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Demo button
+            const demoBtn = document.querySelector('a[href="#demo"]');
+            if (demoBtn) {
+                demoBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('🎮 Demo en vivo próximamente. ¡Regístrate para ser el primero en probarlo!');
+                });
+            }
+
+            // Download buttons
+            document.querySelectorAll('a[href="#download"]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('📱 La beta estará disponible pronto. ¡Déjanos tu email para recibir acceso prioritario!');
+                });
+            });
+
+            // Contact button
+            const contactBtn = document.querySelector('a[href="#contact"]');
+            if (contactBtn) {
+                contactBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('📧 Contacto: hello@chatprivadoseguro.com\n💼 Inversores: investors@chatprivadoseguro.com');
+                });
+            }
+        });
+
+        // Add some interactive effects
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: radial-gradient(circle, rgba(0,255,136,0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transition: transform 0.1s ease;
+                `;
+                document.body.appendChild(newCursor);
+            }
+            
+            const cursorElement = document.querySelector('.cursor');
+            cursorElement.style.left = e.clientX - 10 + 'px';
+            cursorElement.style.top = e.clientY - 10 + 'px';
+        });
+    </script>
+</body>
+</html>
